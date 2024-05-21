@@ -1,7 +1,7 @@
 # FakerAPI Implementation
 
 ## Introduction
-This repository contains a basic implementation of a FakerAPI, designed to simulate transactions, balances, and account information. The project integrates Auth0 for authentication and authorization, ensuring secure access to the API endpoints.
+This repository contains a basic implementation of a FakerAPI for bank, designed to get transactions and accounts information. The project integrates Auth0 for authentication and authorization, ensuring secure access to the API endpoints.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -9,26 +9,26 @@ This repository contains a basic implementation of a FakerAPI, designed to simul
 - [Endpoints](#endpoints)
 - [Models](#models)
 - [Security](#security)
-- [API Documentation](#api-documentation)
 - [Improvements](#improvements)
-- [Examples](#examples)
+- [Example](#example)
 
 ## Prerequisites
 Before you begin, ensure you have the following installed:
-- Java 17 or higher
-- Maven 3.6 or higher
+- Java 17
+- Maven 3.8.1
+- Spring Boot 3.2.5
 - Auth0 account for authentication and authorization
 
 ## Installation
 1. **Clone the repository and navigate to the project directory:**
 
    ```bash
-   git clone https://github.com/your-username/fakerapi.git
+   git clone https://github.com/numoh/BankAPI-Assignment.git
 
-   cd fakerapi
+   cd BankAPI-Assignment
     ```
 2. **Configure Auth0:**
-    Update the `application.properties` file with your Auth0 credentials:
+    Update the `application.properties` file with your Auth0 credentials: (for testing purposes, you can use the provided token down below) 
     ```properties
     spring.security.oauth2.resourceserver.jwt.issuer-uri=https://YOUR_AUTH0_DOMAIN/
     
@@ -76,12 +76,35 @@ The API includes the following models and their respective attributes:
 * Authentication: Managed by Auth0 using JWT tokens.
 * Authorization: Enforced using @PreAuthorize annotations with scopes.
 
-## API Documentation
-
-* The API documentation is available at `http://localhost:8080/swagger-ui.html`
-
 ## Improvements
 
 * Error Handling: Custom exception handling for better error messages.
 * Testing: Implement unit and integration tests.
+* Swagger: Add Swagger documentation for API endpoints.
+
+## Example
+
+Test the API using the terminal or Postman.
+
+Token for testing (valid for 24 hours, until 2024-05-23):
+
+```eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhYRThBUEp3RHJrUy1KeXBhZEJSQSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zN3ZzNXlocmpxNHd1ZzA0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJlM3ZQQkxTZDNEbWEzYWpZeWZ6cWU2R0lYVWRxeHZOSEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9mYWtlYmFua2FwaSIsImlhdCI6MTcxNjMzMjc2MCwiZXhwIjoxNzE2NDE5MTYwLCJzY29wZSI6InJlYWQ6YWNjb3VudHMgcmVhZDphY2NvdW50LXRyYW5zYWN0aW9ucyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6ImUzdlBCTFNkM0RtYTNhall5ZnpxZTZHSVhVZHF4dk5IIn0.fRYf91IW-w9slkQOoGYd2lyqOY5lLSh8MebeJz1GIqw3aq9LX-HO3tPGWdIx75r30ALdlCCreAJoaSdCqWq_krnWs2gCbprUxWXEYj4hCMFGraz8dweBitPORbX6j6hf0YXgEHXbrXAP5qaic_hDSNabRsLKhzBL7K7gwWeARuB7YecvmIa2vxFWpRBT1pww3_wGl_3LQu-X-6KosbL_YPPVz1BuHpbY1Q_cwo3Bo7bpvjFTYZH3ZGU-EcgP7XGsVNgdP4IsV1lD91lD_FNK7AGascoDWSmeKFaRCbBruiY7bBmrg9LlemMrXJGC1l6HfFpBg2lVm1fTFUmN3p_5Wg```
+
+Example request:
+
+This request will return a 403 Forbidden error, as the token does not have the required scope.
+
+```
+curl -X GET "http://localhost:8080/transactions/getAllTransactions" -H "Authorization: Bearer TOKEN"
+```
+
+![alt text](image-4.png)
+
+This request will return a list of all accounts, as the token has the required scope.
+
+```
+curl -X GET "http://localhost:8080/accounts/getAllAccounts" -H "Authorization: Bearer TOKEN"
+```
+
+![alt text](image-5.png)
 
