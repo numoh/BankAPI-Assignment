@@ -1,38 +1,36 @@
 package com.atlar.fakebankapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import java.time.LocalDate;
-public class Transaction {
 
-    @Id
-    private String uniqueIdentifier;
-    private LocalDate bookingDate;
-    private double amount;
+public class Transaction {
+    private String bookingDate;
+    private String amount;
     private String currency;
     private String remittanceInformation;
+    private String uniqueIdentifier;
+    private String accountName;
 
-    public String getUniqueIdentifier() {
-        return uniqueIdentifier;
-    }
-
-    public void setUniqueIdentifier(String uniqueIdentifier) {
+    public Transaction(String bookingDate, String amount, String currency, String remittanceInformation, String uniqueIdentifier, String accountName) {
+        this.bookingDate = bookingDate;
+        this.amount = amount;
+        this.currency = currency;
+        this.remittanceInformation = remittanceInformation;
         this.uniqueIdentifier = uniqueIdentifier;
+        this.accountName = accountName;
     }
 
-    public LocalDate getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDate bookingDate) {
+    public void setBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
@@ -50,5 +48,21 @@ public class Transaction {
 
     public void setRemittanceInformation(String remittanceInformation) {
         this.remittanceInformation = remittanceInformation;
+    }
+
+    public String getUniqueIdentifier() {
+        return uniqueIdentifier;
+    }
+
+    public void setUniqueIdentifier(String uniqueIdentifier) {
+        this.uniqueIdentifier = uniqueIdentifier;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 }

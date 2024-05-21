@@ -1,31 +1,29 @@
 package com.atlar.fakebankapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import java.util.List;
 
-@Entity
 public class Account {
 
-    @Id
     private String accountNumber;
     private String currency;
     private String ownerName;
-    private double balance;
+    private List<Balance> balances;
+
+    public Account(String accountNumber, String currency, String ownerName, List<Balance> balances) {
+        this.accountNumber = accountNumber;
+        this.currency = currency;
+        this.ownerName = ownerName;
+        this.balances = balances;
+    }
+
+    public Account() { }
 
     public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
     public String getCurrency() {
         return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     public String getOwnerName() {
@@ -36,11 +34,17 @@ public class Account {
         this.ownerName = ownerName;
     }
 
-    public double getBalance() {
-        return balance;
+    public List<Balance> getBalances() {
+        return balances;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    @Override
+    public String toString() {
+        return "Account{" +
+            "accountNumber='" + accountNumber + '\'' +
+            ", currency='" + currency + '\'' +
+            ", ownerName='" + ownerName + '\'' +
+            ", balances=" + balances +
+            '}';
     }
 }
