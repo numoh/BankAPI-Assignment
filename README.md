@@ -81,6 +81,7 @@ The API includes the following models and their respective attributes:
 * Error Handling: Custom exception handling for better error messages.
 * Testing: Implement unit and integration tests.
 * Swagger: Add Swagger documentation for API endpoints.
+* Parsing: Better parsing.
 
 ## Example
 
