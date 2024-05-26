@@ -1,6 +1,5 @@
 package com.atlar.fakebankapi.model;
 
-
 public class Transaction {
     private String bookingDate;
     private String amount;
@@ -64,5 +63,17 @@ public class Transaction {
 
     public void setAccountName(String accountName) {
         this.accountName = accountName;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+            "bookingDate='" + bookingDate + '\'' +
+            ", amount='" + amount + '\'' +
+            ", currency='" + currency + '\'' +
+            ", remittanceInformation='" + remittanceInformation + '\'' +
+            ", uniqueIdentifier='" + uniqueIdentifier + '\'' +
+            ", accountName='" + accountName + '\'' +
+            '}';
     }
 }

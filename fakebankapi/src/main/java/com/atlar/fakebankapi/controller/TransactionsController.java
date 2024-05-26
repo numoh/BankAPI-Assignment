@@ -2,7 +2,6 @@ package com.atlar.fakebankapi.controller;
 
 import com.atlar.fakebankapi.model.Transaction;
 import com.atlar.fakebankapi.service.TransactionsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,11 @@ import java.util.List;
 @RequestMapping("/transactions")
 public class TransactionsController {
 
-    @Autowired private TransactionsService transactionsService;
+    private final TransactionsService transactionsService;
+
+    public TransactionsController(TransactionsService transactionsService) {
+        this.transactionsService = transactionsService;
+    }
 
     @GetMapping("/getAllTransactions")
     @PreAuthorize("hasAuthority('SCOPE_read:transactions')")

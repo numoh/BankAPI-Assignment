@@ -3,7 +3,6 @@ package com.atlar.fakebankapi.service;
 import com.atlar.fakebankapi.model.Account;
 import com.atlar.fakebankapi.model.Balance;
 import com.atlar.fakebankapi.util.XMLUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,8 +16,11 @@ public class AccountService {
 
     private List<Account> accounts = new ArrayList<>();
 
-    @Autowired
-    private XMLUtil xmlUtil;
+    private final XMLUtil xmlUtil;
+
+    public AccountService(XMLUtil xmlUtil) {
+        this.xmlUtil = xmlUtil;
+    }
 
     public String parseAccount() {
         try {

@@ -2,23 +2,24 @@ package com.atlar.fakebankapi.service;
 
 import com.atlar.fakebankapi.model.Transaction;
 import com.atlar.fakebankapi.util.XMLUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TransactionsService {
 
-    @Autowired
-    private XMLUtil xmlUtil;
+    private final XMLUtil xmlUtil;
 
     private List<Transaction> transactions = new ArrayList<>();
+
+    public TransactionsService(XMLUtil xmlUtil) {
+        this.xmlUtil = xmlUtil;
+    }
 
     public String parseTransactions() {
         try {
